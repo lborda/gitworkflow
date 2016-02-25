@@ -1,0 +1,48 @@
+1. Begin new feature
+git checkout -b some-feature develop
+git status
+git add <some-file>
+git commit
+
+2. Mary finishes her feature
+git pull origin develop
+git checkout develop
+git merge some-feature
+git push
+git branch -d some-feature
+
+3. Mary begins to prepare a release
+git checkout -b release-0.1 develop
+
+4. Mary finishes the release
+git checkout master
+git merge release-0.1
+git push
+git checkout develop
+git merge release-0.1
+git push
+git branch -d release-0.1
+
+5. Mary tag a release
+git tag -a 0.1 -m "Initial public release" master
+git push --tags
+
+6. End-user discovers a bug
+git checkout -b issue-#001 master
+# Fix the bug
+git add <some-file>
+git commit
+##
+git checkout master
+git merge issue-#001
+git push
+--
+git checkout develop
+git merge issue-#001
+git push
+git branch -d issue-#001
+
+7. Export archive for deployment
+git checkout master
+git archive -o /tmp/travelplan-web.zip master
+
