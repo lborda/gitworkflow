@@ -44,5 +44,5 @@ git branch -d issue-#001
 
 7. Export archive for deployment
 git checkout master
-git archive -o /tmp/travelplan-web.zip master
+git archive -o /tmp/file.zip master
 
